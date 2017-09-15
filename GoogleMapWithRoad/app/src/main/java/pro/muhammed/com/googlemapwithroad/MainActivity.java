@@ -72,10 +72,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 //            }
 //        });
         LatLng start = new LatLng(10.016056, 76.341847);
-//        LatLng waypoint = new LatLng(18.01455, -77.499333);
+        LatLng waypoint = new LatLng(10.008207, 76.315994);
         LatLng end = new LatLng(9.957815, 76.358412);
         routing = new Routing.Builder().travelMode(Routing.TravelMode.DRIVING)
-                .withListener(MainActivity.this).waypoints(start, end)
+                .withListener(MainActivity.this).waypoints(start, waypoint, end)
                 .key("AIzaSyBkBF07tPOxZVC9c7PhKPGGrWPn3z0_QO8").build();
         routing.execute();
 
@@ -94,11 +94,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onRoutingSuccess(ArrayList<Route> arrayList, int i) {
-        googleMap.addPolyline(new PolylineOptions()
-                .addAll(arrayList.get(0).getPoints())
-                .width(12)
-                .color(Color.parseColor("#A299F6"))//Google maps blue color
-                .geodesic(true));
+        for (Route route : arrayList) {
+            googleMap.addPolyline(new PolylineOptions()
+                    .addAll(route.getPoints())
+                    .width(12)
+                    .color(Color.parseColor("#A299F6"))//Google maps blue color
+                    .geodesic(true));
+
+        }
 
 
     }
