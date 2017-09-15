@@ -18,7 +18,9 @@ android {
         }
     }
 }
-
+def retrofitVersion = "2.0.2"
+def converterGson = "2.0.0-beta4"
+def okHttpVersion = "3.0.1"
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -26,5 +28,12 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.google.android.gms:play-services-maps:11.2.2'
+    compile 'com.github.jd-alexander:library:1.1.0'
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$converterGson"
+    compile "com.squareup.okhttp3:okhttp-urlconnection:$okHttpVersion"
+    compile "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+    compile 'com.google.maps.android:android-maps-utils:0.4+'
     testCompile 'junit:junit:4.12'
 }
